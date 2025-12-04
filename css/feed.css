@@ -1,0 +1,329 @@
+@font-face {
+    font-family: "Bubblebody Neue";
+    src: url("../fonts/BubbleboddyNeue-Light Trial.ttf") format("truetype");
+    font-display: swap;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url('../images/bg-3.jpg');
+    font-family: "Bubblebody Neue", Arial, sans-serif;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(114, 200, 189, 0.95);
+    padding: 20px 35px;
+    border-radius: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.logo img {
+    height: 65px;
+}
+
+nav {
+    display: flex;
+    gap: 8px;
+}
+
+.nav-link {
+    color: #017163;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 10px 16px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.95em;
+}
+
+.nav-link:hover {
+    background-color: rgba(1, 113, 99, 0.1);
+    transform: translateY(-2px);
+}
+
+.nav-link.active {
+    background-color: #017163;
+    color: #72c8bd;
+}
+
+.feed-container {
+    background: rgba(114, 200, 189, 0.95);
+    border-radius: 25px;
+    padding: 35px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+}
+
+.post-form-container {
+    margin-bottom: 35px;
+}
+
+.post-form-container h3 {
+    margin-top: 0;
+    color: #017163;
+    font-size: 1.4em;
+    margin-bottom: 20px;
+}
+
+.post-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.post-title-input {
+    width: 100%;
+    border: none;
+    border-radius: 12px;
+    padding: 15px 18px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    font-size: 1.1em;
+    background-color: #017163;
+    color: #72c8bd;
+    font-weight: 600;
+}
+
+.post-title-input::placeholder {
+    color: rgba(114, 200, 189, 0.7);
+}
+
+.post-form textarea {
+    width: 100%;
+    height: 120px;
+    border: none;
+    border-radius: 12px;
+    padding: 15px 18px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    font-size: 1.05em;
+    background-color: #017163;
+    color: #72c8bd;
+    resize: vertical;
+}
+
+.post-form textarea::placeholder {
+    color: rgba(114, 200, 189, 0.7);
+}
+
+.post-form textarea:focus, .post-title-input:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(185, 227, 102, 0.3);
+}
+
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.anonymous-checkbox {
+    color: #017163;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.anonymous-checkbox:hover {
+    color: #015a4f;
+}
+
+.anonymous-checkbox input[type="checkbox"] {
+    cursor: pointer;
+}
+
+.post-button {
+    background-color: #017163;
+    color: #72c8bd;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-family: "Bubblebody Neue", Arial, sans-serif;
+    font-size: 1.05em;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.post-button:hover {
+    background-color: #015a4f;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(1, 113, 99, 0.4);
+}
+
+.posts-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.post {
+    background: #017163;
+    border-radius: 18px;
+    padding: 25px;
+    color: #72c8bd;
+    position: relative;
+    transition: all 0.3s ease;
+    animation: slideIn 0.4s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.post:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.post.resource {
+    border-left: 6px solid #b9e366;
+    background: linear-gradient(135deg, #017163 0%, #015a4f 100%);
+}
+
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}
+
+.post-author-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.author {
+    font-weight: 700;
+    font-size: 1.05em;
+}
+
+.date {
+    opacity: 0.8;
+    font-size: 0.9em;
+}
+
+.resource-badge {
+    background: #b9e366;
+    color: #017163;
+    padding: 6px 12px;
+    border-radius: 10px;
+    font-size: 0.85em;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.post-title {
+    color: #b9e366;
+    margin: 0 0 12px 0;
+    font-size: 1.4em;
+    font-weight: 700;
+}
+
+.post-content {
+    line-height: 1.7;
+    margin-bottom: 15px;
+    font-size: 1.05em;
+}
+
+.post-actions {
+    display: flex;
+    gap: 15px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(114, 200, 189, 0.2);
+}
+
+.action-btn {
+    background: none;
+    border: none;
+    color: #72c8bd;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: "Bubblebody Neue", Arial, sans-serif;
+    font-size: 1em;
+    padding: 8px 12px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.action-btn:hover {
+    background-color: rgba(114, 200, 189, 0.1);
+    transform: scale(1.05);
+}
+
+.like-btn.liked {
+    color: #ff6b9d;
+}
+
+.like-btn.liked svg {
+    fill: #ff6b9d;
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+    }
+    
+    nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .nav-link span {
+        display: none;
+    }
+    
+    .feed-container {
+        padding: 25px 20px;
+    }
+    
+    .form-options {
+        flex-direction: column;
+        gap: 12px;
+        align-items: stretch;
+    }
+    
+    .post-button {
+        justify-content: center;
+    }
+}

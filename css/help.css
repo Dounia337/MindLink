@@ -1,0 +1,215 @@
+@font-face {
+    font-family: "Bubblebody Neue";
+    src: url("../fonts/BubbleboddyNeue-Light Trial.ttf") format("truetype");
+    font-display: swap;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url('../images/bg-3.jpg');
+    font-family: "Bubblebody Neue", Arial, sans-serif;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(114, 200, 189, 0.95);
+    padding: 20px 35px;
+    border-radius: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.logo img {
+    height: 65px;
+}
+
+nav {
+    display: flex;
+    gap: 8px;
+}
+
+.nav-link {
+    color: #017163;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 10px 16px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.95em;
+}
+
+.nav-link:hover {
+    background-color: rgba(1, 113, 99, 0.1);
+    transform: translateY(-2px);
+}
+
+.nav-link.active {
+    background-color: #017163;
+    color: #72c8bd;
+}
+
+.help-container {
+    background: rgba(114, 200, 189, 0.95);
+    border-radius: 25px;
+    padding: 35px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+}
+
+.help-container h2 {
+    margin: 0 0 10px 0;
+    color: #017163;
+    text-align: center;
+    font-size: 2em;
+}
+
+.subtitle {
+    text-align: center;
+    color: #017163;
+    margin: 0 0 35px 0;
+    font-size: 1.1em;
+    opacity: 0.9;
+}
+
+.faq-section {
+    margin-bottom: 35px;
+}
+
+.faq-item {
+    background: #017163;
+    border-radius: 18px;
+    padding: 25px;
+    margin-bottom: 20px;
+    color: #72c8bd;
+    display: flex;
+    gap: 20px;
+    transition: all 0.3s ease;
+    animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.faq-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.faq-icon {
+    flex-shrink: 0;
+    color: #b9e366;
+}
+
+.faq-content {
+    flex: 1;
+}
+
+.faq-item h3 {
+    margin: 0 0 12px 0;
+    color: #b9e366;
+    font-size: 1.3em;
+}
+
+.faq-item p {
+    margin: 0;
+    line-height: 1.7;
+    font-size: 1.05em;
+}
+
+.contact-info {
+    background: linear-gradient(135deg, #017163 0%, #015a4f 100%);
+    border-radius: 18px;
+    padding: 30px;
+    text-align: center;
+    color: #72c8bd;
+}
+
+.contact-info svg {
+    margin-bottom: 15px;
+    color: #b9e366;
+}
+
+.contact-info h3 {
+    margin: 0 0 10px 0;
+    color: #b9e366;
+    font-size: 1.5em;
+}
+
+.contact-info p {
+    margin: 0 0 20px 0;
+    font-size: 1.1em;
+}
+
+.contact-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #72c8bd;
+    color: #017163;
+    text-decoration: none;
+    padding: 14px 28px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1.05em;
+    transition: all 0.3s ease;
+}
+
+.contact-button:hover {
+    background-color: #5bb8ad;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(114, 200, 189, 0.4);
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+    }
+    
+    nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .help-container {
+        padding: 25px 20px;
+    }
+    
+    .faq-item {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .faq-icon {
+        align-self: flex-start;
+    }
+}

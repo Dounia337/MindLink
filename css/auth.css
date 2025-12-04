@@ -1,0 +1,233 @@
+@font-face {
+    font-family: "Bubblebody Neue";
+    src: url("../fonts/BubbleboddyNeue-Light Trial.ttf") format("truetype");
+    font-display: swap;
+    unicode-range: U+0041-005A, U+0061-007A, U+0020-002F, U+003A-0040, U+005B-0060, U+007B-007E;
+}
+
+/* Fallback for numbers and special characters */
+input, textarea {
+    font-family: "Bubblebody Neue", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif !important;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url('../images/bg-3.jpg');
+    font-family: "Bubblebody Neue", Arial, sans-serif;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth-wrapper {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth-container {
+    width: 100%;
+    max-width: 500px;
+}
+
+.logo {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.logo img {
+    width: 160px;
+    height: auto;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+}
+
+.auth-box {
+    background: rgba(114, 200, 189, 0.95);
+    padding: 40px;
+    border-radius: 25px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    animation: slideUp 0.5s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.auth-box h2 {
+    color: #017163;
+    margin: 0 0 10px 0;
+    font-size: 2.2em;
+    text-align: center;
+}
+
+.subtitle {
+    color: #017163;
+    text-align: center;
+    margin: 0 0 30px 0;
+    font-size: 1.1em;
+    opacity: 0.9;
+}
+
+.error-message, .success-message {
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    animation: shake 0.4s ease;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+.error-message {
+    background-color: #ff6b6b;
+    color: white;
+}
+
+.success-message {
+    background-color: #b9e366;
+    color: #017163;
+    font-weight: 600;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    color: #017163;
+    font-weight: 600;
+    font-size: 1.05em;
+}
+
+.form-group input {
+    background-color: #017163;
+    border: none;
+    border-radius: 12px;
+    padding: 15px 18px;
+    color: #72c8bd;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    font-size: 1.05em;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.form-group input::placeholder {
+    color: rgba(114, 200, 189, 0.7);
+}
+
+.form-group input:focus {
+    outline: none;
+    background-color: #015a4f;
+    box-shadow: 0 0 0 3px rgba(185, 227, 102, 0.3);
+}
+
+.auth-button {
+    background-color: #017163;
+    color: #72c8bd;
+    border: none;
+    padding: 16px 30px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-family: "Bubblebody Neue", Arial, sans-serif;
+    font-size: 1.2em;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    box-shadow: 0 4px 15px rgba(1, 113, 99, 0.4);
+}
+
+.auth-button:hover {
+    background-color: #015a4f;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(1, 113, 99, 0.5);
+}
+
+.auth-button svg {
+    transition: transform 0.3s ease;
+}
+
+.auth-button:hover svg {
+    transform: translateX(5px);
+}
+
+.auth-redirect {
+    text-align: center;
+    margin-top: 25px;
+    padding-top: 25px;
+    border-top: 2px solid rgba(1, 113, 99, 0.2);
+}
+
+.auth-redirect p {
+    color: #017163;
+    margin: 0;
+    font-size: 1.05em;
+}
+
+.auth-redirect a {
+    color: #017163;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    border-bottom: 2px solid transparent;
+}
+
+.auth-redirect a:hover {
+    border-bottom-color: #017163;
+}
+
+@media (max-width: 600px) {
+    .auth-box {
+        padding: 30px 25px;
+    }
+    
+    .auth-box h2 {
+        font-size: 1.8em;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}

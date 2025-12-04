@@ -1,0 +1,112 @@
+@font-face {
+    font-family: "Bubblebody Neue";
+    src: url("../fonts/BubbleboddyNeue-Light Trial.ttf");
+}
+
+.logo {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 50px;
+    margin-left: 100px;
+}
+
+body {
+    background-image: url('../images/bg-3.jpg');
+    font-family: "Bubblebody Neue";
+    background-repeat: no-repeat;
+    background-size: cover;
+    max-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.box {
+    width: 400px;
+    background: #72c8bd;
+    color: black;
+    position: center;
+    padding: 30px;
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.box-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.button {
+    border: none;
+    color: black;
+    background-color: #017163;
+    font-size: large;
+    padding: 12px 24px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    font-family: "Bubblebody Neue";
+}
+
+.button:hover {
+    background-color: #015a4f;
+}
+
+input::placeholder {
+    color: black;
+    opacity: 0.8;
+}
+
+.form-category {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.submit-category {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.form {
+    background-color: #017163;
+    outline: none;
+    border-radius: 10px;
+    height: 40px;
+    border: none;
+    color: #72c8bd;
+    font-size: 15px;
+    padding-left: 15px;
+    width: 100%;
+    font-family: "Bubblebody Neue";
+}
+
+.form:focus {
+    background-color: #015a4f;
+}
+
+.error-message {
+    background-color: #ff6b6b;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.signup-redirect {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.signup-redirect a {
+    color: #017163;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.signup-redirect a:hover {
+    text-decoration: underline;
+}
