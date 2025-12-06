@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         } else {
             // Hash password and insert user
             $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-            $stmt = $pdo->prepare("INSERT INTO users (first_name, last_name, email, password) VALUES (?, ?, ?, ?)");
+            $stmt = $pdo->prepare("INSERT INTO Users (first_name, last_name, email, password) VALUES (?, ?, ?, ?)");
             
             if ($stmt->execute([$first_name, $last_name, $email, $hashed_password])) {
                 // Redirect to login with success message
