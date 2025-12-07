@@ -21,6 +21,7 @@ body {
     
     font-family: "Bubblebody Neue", Arial, sans-serif;
     background: transparent;
+    background: url('../images/bg-3.jpg') center/cover no-repeat fixed;
 
     margin: 0;
     padding: 0;
