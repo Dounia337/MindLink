@@ -291,10 +291,13 @@ nav {
 
 .like-btn.liked {
     color: #ff6b9d;
+    font-family: "sans-serif";
 }
 
 .like-btn.liked svg {
     fill: #ff6b9d;
+    font-family: "sans-serif";
+
 }
 
 @media (max-width: 768px) {
