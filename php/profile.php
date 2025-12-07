@@ -12,7 +12,7 @@ $error = '';
 $success = '';
 
 // Fetch user data
-$stmt = $pdo->prepare("SELECT first_name, last_name, email, profile_pic, about, is_peer_counselor, peer_counselor_id FROM users WHERE id = ?");
+$stmt = $pdo->prepare("SELECT first_name, last_name, email, profile_pic, about, is_peer_counselor, peer_counselor_id FROM Users WHERE id = ?");
 $stmt->execute([$user_id]);
 $user = $stmt->fetch();
 
@@ -87,7 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
             
             // Refresh user data
-            $stmt = $pdo->prepare("SELECT first_name, last_name, email, profile_pic, about, is_peer_counselor, peer_counselor_id FROM users WHERE id = ?");
+            $stmt = $pdo->prepare("SELECT first_name, last_name, email, profile_pic, about, is_peer_counselor, peer_counselor_id FROM Users WHERE id = ?");
             $stmt->execute([$user_id]);
             $user = $stmt->fetch();
         } else {
