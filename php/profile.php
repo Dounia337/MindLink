@@ -78,7 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     
     if (empty($error)) {
-        $stmt = $pdo->prepare("UPDATE users SET first_name = ?, last_name = ?, about = ?, profile_pic = ?, is_peer_counselor = ?, peer_counselor_id = ? WHERE id = ?");
+        $stmt = $pdo->prepare("UPDATE Users SET first_name = ?, last_name = ?, about = ?, profile_pic = ?, is_peer_counselor = ?, peer_counselor_id = ? WHERE id = ?");
         
         if ($stmt->execute([$first_name, $last_name, $about, $profile_pic, $is_peer_counselor, $peer_counselor_id, $user_id])) {
             $_SESSION['first_name'] = $first_name;
