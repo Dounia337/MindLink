@@ -12,7 +12,7 @@ $success = '';
 $error = '';
 
 // Check if user is peer counselor
-$stmt = $pdo->prepare("SELECT is_peer_counselor FROM users WHERE id = ?");
+$stmt = $pdo->prepare("SELECT is_peer_counselor FROM Users WHERE id = ?");
 $stmt->execute([$user_id]);
 $user = $stmt->fetch();
 $is_peer_counselor = $user['is_peer_counselor'];
@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['title']) && isset($_PO
 $stmt = $pdo->prepare("
     SELECT r.*, CONCAT(u.first_name, ' ', u.last_name) as author_name
     FROM resources r
-    JOIN users u ON r.user_id = u.id
+    JOIN Users u ON r.user_id = u.id
     WHERE u.is_peer_counselor = 1
     ORDER BY r.created_at DESC
 ");
