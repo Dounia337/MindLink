@@ -44,7 +44,7 @@ $stmt = $pdo->prepare("
         MAX(CASE WHEN l.user_id = ? THEN 1 ELSE 0 END) as user_liked,
         RAND(?) as random_order
     FROM posts p
-    JOIN users u ON p.user_id = u.id
+    JOIN Users u ON p.user_id = u.id
     LEFT JOIN likes l ON p.id = l.post_id
     LEFT JOIN comments c ON p.id = c.post_id
     GROUP BY p.id
@@ -64,7 +64,7 @@ $stmt = $pdo->prepare("
         0 as user_liked,
         RAND(?) as random_order
     FROM resources r
-    JOIN users u ON r.user_id = u.id
+    JOIN Users u ON r.user_id = u.id
     WHERE u.is_peer_counselor = 1
     
     ORDER BY random_order, created_at DESC
