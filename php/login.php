@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (empty($email) || empty($password)) {
         $error = 'Please enter both email and password';
     } else {
-        $stmt = $pdo->prepare("SELECT id, first_name, password FROM users WHERE email = ?");
+        $stmt = $pdo->prepare("SELECT id, first_name, password FROM Users WHERE email = ?");
         $stmt->execute([$email]);
         $user = $stmt->fetch();
         
