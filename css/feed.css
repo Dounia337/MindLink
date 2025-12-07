@@ -8,9 +8,6 @@
     box-sizing: border-box;
 }
 
-html {
-    background: url('../images/bg-3.jpg') center/cover no-repeat fixed;
-}
 html, body {
     height: 100%;
     margin: 0;
