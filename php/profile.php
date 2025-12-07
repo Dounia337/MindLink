@@ -23,50 +23,33 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
     // Handle profile picture upload
     $profile_pic = $user['profile_pic'];
-
-if (isset($_FILES['profile_pic']) && $_FILES['profile_pic']['error'] === 0) {
-
-    // Validate file type using MIME detection
-    $allowed_types = ['image/jpeg', 'image/png', 'image/gif'];
-    $file_mime = mime_content_type($_FILES['profile_pic']['tmp_name']);
-
-    if (in_array($file_mime, $allowed_types)) {
-
-        // Absolute directory path on the server
-        $upload_dir = __DIR__ . '/../uploads/profile_pics/';
-
-        // Create directory if missing (common issue on live servers)
-        if (!is_dir($upload_dir)) {
-            mkdir($upload_dir, 0755, true);
-        }
-
-        // Generate filename
-        $ext = pathinfo($_FILES['profile_pic']['name'], PATHINFO_EXTENSION);
-        $filename = 'user_' . $user_id . '_' . time() . '.' . $ext;
-        $destination = $upload_dir . $filename;
-
-        // Move uploaded file
-        if (move_uploaded_file($_FILES['profile_pic']['tmp_name'], $destination)) {
-
-            // Delete old image if exists
-            if (!empty($profile_pic)) {
-                $old_path = __DIR__ . '/../' . $profile_pic;
-                if (file_exists($old_path)) {
-                    unlink($old_path);
-                }
+    if (isset($_FILES['profile_pic']) && $_FILES['profile_pic']['error'] == 0) {
+        $allowed_types = ['image/jpeg', 'image/png', 'image/gif'];
+        $file_type = $_FILES['profile_pic']['type'];
+        
+        if (in_array($file_type, $allowed_types)) {
+            $upload_dir = '../uploads/profile_pics/';
+            if (!is_dir($upload_dir)) {
+                mkdir($upload_dir, 0777, true);
             }
-
-            // Save path for database (web-accessible path)
-            $profile_pic = 'uploads/profile_pics/' . $filename;
-
+            
+            $file_extension = pathinfo($_FILES['profile_pic']['name'], PATHINFO_EXTENSION);
+            $filename = 'user_' . $user_id . '_' . time() . '.' . $file_extension;
+            $destination = $upload_dir . $filename;
+            
+            if (move_uploaded_file($_FILES['profile_pic']['tmp_name'], $destination)) {
+                // Delete old profile picture if exists
+                if ($profile_pic && file_exists('../' . $profile_pic)) {
+                    unlink('../' . $profile_pic);
+                }
+                $profile_pic = 'uploads/profile_pics/' . $filename;
+            } else {
+                $error = 'Failed to upload image.';
+            }
         } else {
-            $error = 'Failed to upload image on the server.';
+            $error = 'Invalid file type. Only JPG, PNG, and GIF are allowed.';
         }
-
-    } else {
-        $error = 'Invalid file type. Only JPG, PNG, and GIF are allowed.';
     }
-}
     
     // Handle peer counselor verification
     $is_peer_counselor = $user['is_peer_counselor'];
