@@ -20,6 +20,7 @@ body {
     background: transparent;
     background: url('../images/bg-3.jpg') center/cover no-repeat fixed;
     background-attachment: fixed;
+    background-size: cover;
     margin: 0;
     padding: 0;
     color: #333;
