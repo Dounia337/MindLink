@@ -8,12 +8,20 @@
     box-sizing: border-box;
 }
 
+html {
+    background: url('../images/bg-3.jpg') center/cover no-repeat fixed;
+}
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 body {
-    background-image: url('../images/bg-3.jpg');
+    
     font-family: "Bubblebody Neue", Arial, sans-serif;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
+    background: transparent;
+
     margin: 0;
     padding: 0;
     color: #333;
