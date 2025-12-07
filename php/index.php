@@ -9,7 +9,7 @@
 <body>
     <div class="welcome-container">
         <div class="logo">
-            <img src="../images/MindLink.png" alt="MindLink Logo">
+            <img src="../images/MindLink.png" alt="MindLink Logo" class="main-logo">
         </div>
         
         <div class="welcome-content">
