@@ -14,7 +14,7 @@
 body {
     background-image: url('../images/bg-3.jpg');
     font-family: "Bubblebody Neue";
-    background-repeat: no-repeat;
+    
     background-size: cover;
     max-height: 100vh;
     margin: 0;
