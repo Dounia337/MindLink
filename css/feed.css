@@ -235,6 +235,7 @@ nav {
 .date {
     opacity: 0.8;
     font-size: 0.9em;
+    font-family: "sans-serif";
 }
 
 .resource-badge {
