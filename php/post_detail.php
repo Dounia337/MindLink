@@ -39,7 +39,7 @@ $stmt = $pdo->prepare("
         COUNT(DISTINCT l.id) as like_count,
         MAX(CASE WHEN l.user_id = ? THEN 1 ELSE 0 END) as user_liked
     FROM posts p
-    JOIN users u ON p.user_id = u.id
+    JOIN Users u ON p.user_id = u.id
     LEFT JOIN likes l ON p.id = l.post_id
     WHERE p.id = ?
     GROUP BY p.id
@@ -64,7 +64,7 @@ $stmt = $pdo->prepare("
             ELSE CONCAT(u.first_name, ' ', u.last_name)
         END as author_name
     FROM comments c
-    JOIN users u ON c.user_id = u.id
+    JOIN Users u ON c.user_id = u.id
     WHERE c.post_id = ?
     ORDER BY c.created_at ASC
 ");
