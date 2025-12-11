@@ -10,7 +10,7 @@ if (!isset($_SESSION['user_id'])) {
 $user_id = $_SESSION['user_id'];
 
 // Check if user is counselor admin
-$stmt = $pdo->prepare("SELECT is_counselor_admin FROM users WHERE id = ?");
+$stmt = $pdo->prepare("SELECT is_counselor_admin FROM Users WHERE id = ?");
 $stmt->execute([$user_id]);
 $user = $stmt->fetch();
 
@@ -65,7 +65,7 @@ $stmt->execute();
 $counselor_ids = $stmt->fetchAll();
 
 // Fetch statistics
-$stmt = $pdo->prepare("SELECT COUNT(*) as count FROM users WHERE is_peer_counselor = 1");
+$stmt = $pdo->prepare("SELECT COUNT(*) as count FROM Users WHERE is_peer_counselor = 1");
 $stmt->execute();
 $verified_counselors = $stmt->fetch()['count'];
 
@@ -77,7 +77,7 @@ $stmt = $pdo->prepare("SELECT COUNT(*) as count FROM resources");
 $stmt->execute();
 $total_resources = $stmt->fetch()['count'];
 
-$stmt = $pdo->prepare("SELECT COUNT(*) as count FROM users WHERE is_counselor_admin = 0");
+$stmt = $pdo->prepare("SELECT COUNT(*) as count FROM Users WHERE is_counselor_admin = 0");
 $stmt->execute();
 $total_students = $stmt->fetch()['count'];
 ?>
