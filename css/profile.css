@@ -21,7 +21,7 @@ body {
 }
 
 .container {
-    max-width: 900px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
 }
@@ -57,6 +57,7 @@ nav {
     align-items: center;
     gap: 6px;
     font-size: 0.95em;
+    font-family: "Bubblebody Neue", Arial, sans-serif;
 }
 
 .nav-link:hover {
@@ -81,6 +82,7 @@ nav {
     color: #017163;
     text-align: center;
     font-size: 2em;
+    font-family: "Bubblebody Neue", Arial, sans-serif;
 }
 
 .error-message, .success-message {
@@ -90,6 +92,7 @@ nav {
     display: flex;
     align-items: center;
     gap: 10px;
+    font-family: Arial, sans-serif;
 }
 
 .error-message {
@@ -141,6 +144,7 @@ nav {
     cursor: pointer;
     font-weight: 600;
     transition: all 0.3s ease;
+    font-family: "Bubblebody Neue", Arial, sans-serif;
 }
 
 .upload-picture label:hover {
@@ -168,6 +172,7 @@ nav {
     color: #017163;
     font-weight: 600;
     font-size: 1.05em;
+    font-family: "Bubblebody Neue", Arial, sans-serif;
 }
 
 .form-group input,
@@ -177,7 +182,7 @@ nav {
     border-radius: 12px;
     padding: 15px 18px;
     color: #72c8bd;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    font-family: Arial, sans-serif;
     font-size: 1.05em;
     transition: all 0.3s ease;
 }
@@ -195,6 +200,7 @@ nav {
 .form-group input::placeholder,
 .form-group textarea::placeholder {
     color: rgba(114, 200, 189, 0.6);
+    font-family: Arial, sans-serif;
 }
 
 .form-group input:focus,
@@ -218,12 +224,14 @@ nav {
     display: flex;
     align-items: center;
     gap: 10px;
+    font-family: "Bubblebody Neue", Arial, sans-serif;
 }
 
 .verification-section p {
     color: #72c8bd;
     margin: 0 0 20px 0;
     font-size: 1.05em;
+    font-family: "Bubblebody Neue", Arial, sans-serif;
 }
 
 .verification-section .form-group label {
@@ -233,11 +241,12 @@ nav {
 .verification-section .form-group input {
     background-color: #72c8bd;
     color: #017163;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    font-family: Arial, sans-serif;
 }
 
 .verification-section .form-group input::placeholder {
     color: rgba(1, 113, 99, 0.6);
+    font-family: Arial, sans-serif;
 }
 
 .counselor-badge {
@@ -253,6 +262,7 @@ nav {
     justify-content: center;
     gap: 10px;
     margin: 20px 0;
+    font-family: "Bubblebody Neue", Arial, sans-serif;
 }
 
 .update-button {

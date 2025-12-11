@@ -58,6 +58,7 @@ nav {
     gap: 8px;
     background-color: #017163;
     color: #72c8bd;
+    font-family: "Bubblebody Neue", Arial, sans-serif;
 }
 
 .nav-link:hover {
@@ -93,25 +94,32 @@ nav {
 .author {
     font-weight: 700;
     font-size: 1.1em;
+    font-family: "Bubblebody Neue", Arial, sans-serif;
 }
 
 .date {
     opacity: 0.8;
     font-size: 0.95em;
+    font-family: Arial, sans-serif;
 }
 
 .post-title {
     color: #b9e366;
+    background-color: rgba(185, 227, 102, 0.15);
+    padding: 12px 18px;
+    border-radius: 10px;
     margin: 0 0 20px 0;
     font-size: 2em;
     font-weight: 700;
     line-height: 1.3;
+    font-family: "Bubblebody Neue", Arial, sans-serif;
 }
 
 .post-content {
     line-height: 1.8;
     font-size: 1.1em;
     margin-bottom: 25px;
+    font-family: Arial, sans-serif;
 }
 
 .post-stats {
@@ -126,6 +134,7 @@ nav {
     align-items: center;
     gap: 8px;
     font-weight: 600;
+    font-family: Arial, sans-serif;
 }
 
 .comments-section {
@@ -136,6 +145,7 @@ nav {
     color: #017163;
     margin: 0 0 25px 0;
     font-size: 1.8em;
+    font-family: "Bubblebody Neue", Arial, sans-serif;
 }
 
 .comment-form-container {
@@ -149,6 +159,7 @@ nav {
     color: #72c8bd;
     margin: 0 0 15px 0;
     font-size: 1.3em;
+    font-family: "Bubblebody Neue", Arial, sans-serif;
 }
 
 .comment-form {
@@ -163,7 +174,7 @@ nav {
     border: none;
     border-radius: 12px;
     padding: 15px 18px;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    font-family: Arial, sans-serif;
     font-size: 1.05em;
     background-color: #72c8bd;
     color: #017163;
@@ -172,6 +183,7 @@ nav {
 
 .comment-form textarea::placeholder {
     color: rgba(1, 113, 99, 0.6);
+    font-family: Arial, sans-serif;
 }
 
 .comment-form textarea:focus {
@@ -192,6 +204,7 @@ nav {
     align-items: center;
     gap: 8px;
     cursor: pointer;
+    font-family: "Bubblebody Neue", Arial, sans-serif;
 }
 
 .anonymous-checkbox input[type="checkbox"] {
@@ -254,15 +267,18 @@ nav {
 
 .comment-author {
     font-weight: 700;
+    font-family: "Bubblebody Neue", Arial, sans-serif;
 }
 
 .comment-date {
     opacity: 0.7;
+    font-family: Arial, sans-serif;
 }
 
 .comment-content {
     line-height: 1.6;
     font-size: 1em;
+    font-family: Arial, sans-serif;
 }
 
 .no-comments {
@@ -279,6 +295,7 @@ nav {
 .no-comments p {
     margin: 0;
     font-size: 1.1em;
+    font-family: "Bubblebody Neue", Arial, sans-serif;
 }
 
 @media (max-width: 768px) {
@@ -292,6 +309,7 @@ nav {
     
     .post-title {
         font-size: 1.6em;
+        
     }
     
     .form-options {

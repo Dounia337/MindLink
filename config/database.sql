@@ -1,9 +1,9 @@
 -- Create the database
-CREATE DATABASE IF NOT EXISTS mindlink;
+CREATE DATABASE IF NOT EXISTS test_mindlink;
 USE mindlink;
 
 -- Create users table
-CREATE TABLE IF NOT EXISTS users (
+CREATE TABLE IF NOT EXISTS Users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(50) NOT NULL,
@@ -12,6 +12,7 @@ CREATE TABLE IF NOT EXISTS users (
     profile_pic VARCHAR(255) DEFAULT NULL,
     about TEXT,
     is_peer_counselor BOOLEAN DEFAULT FALSE,
+    is_counselor_admin BOOLEAN DEFAULT FALSE,
     peer_counselor_id VARCHAR(100) DEFAULT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
@@ -74,3 +75,8 @@ INSERT INTO peer_counselor_ids (counselor_id, first_name, last_name) VALUES
 ('PC001', 'John', 'Doe'),
 ('PC002', 'Jane', 'Smith'),
 ('PC003', 'Emily', 'Johnson');
+
+-- Create a default counselor admin account
+-- Password is: counselor123
+INSERT INTO users (first_name, last_name, email, password, is_counselor_admin, is_peer_counselor) VALUES
+('Admin', 'Counselor', 'counselor@mindlink.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 1, 1);

@@ -57,6 +57,7 @@ nav {
     align-items: center;
     gap: 6px;
     font-size: 0.95em;
+    font-family: "Bubblebody Neue", Arial, sans-serif;
 }
 
 .nav-link:hover {
@@ -81,6 +82,7 @@ nav {
     color: #017163;
     text-align: center;
     font-size: 2em;
+    font-family: "Bubblebody Neue", Arial, sans-serif;
 }
 
 .subtitle {
@@ -89,6 +91,7 @@ nav {
     margin: 0 0 35px 0;
     font-size: 1.1em;
     opacity: 0.9;
+    font-family: "Bubblebody Neue", Arial, sans-serif;
 }
 
 .faq-section {
@@ -136,12 +139,14 @@ nav {
     margin: 0 0 12px 0;
     color: #b9e366;
     font-size: 1.3em;
+    font-family: "Bubblebody Neue", Arial, sans-serif;
 }
 
 .faq-item p {
     margin: 0;
     line-height: 1.7;
     font-size: 1.05em;
+    font-family: Arial, sans-serif;
 }
 
 .contact-info {
@@ -161,11 +166,13 @@ nav {
     margin: 0 0 10px 0;
     color: #b9e366;
     font-size: 1.5em;
+    font-family: "Bubblebody Neue", Arial, sans-serif;
 }
 
 .contact-info p {
     margin: 0 0 20px 0;
     font-size: 1.1em;
+    font-family: "Bubblebody Neue", Arial, sans-serif;
 }
 
 .contact-button {
@@ -180,6 +187,7 @@ nav {
     font-weight: 600;
     font-size: 1.05em;
     transition: all 0.3s ease;
+    font-family: Arial, sans-serif;
 }
 
 .contact-button:hover {

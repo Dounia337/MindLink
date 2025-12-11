@@ -11,11 +11,12 @@ $user_id = $_SESSION['user_id'];
 $success = '';
 $error = '';
 
-// Check if user is peer counselor
-$stmt = $pdo->prepare("SELECT is_peer_counselor FROM Users WHERE id = ?");
+// Check if user is peer counselor OR counselor admin
+$stmt = $pdo->prepare("SELECT is_peer_counselor, is_counselor_admin FROM users WHERE id = ?");
 $stmt->execute([$user_id]);
 $user = $stmt->fetch();
-$is_peer_counselor = $user['is_peer_counselor'];
+$is_peer_counselor = $user['is_peer_counselor'] || $user['is_counselor_admin'];
+$is_counselor_admin = $user['is_counselor_admin'];
 
 // Handle resource submission
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['title']) && isset($_POST['content'])) {
@@ -39,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['title']) && isset($_PO
 $stmt = $pdo->prepare("
     SELECT r.*, CONCAT(u.first_name, ' ', u.last_name) as author_name
     FROM resources r
-    JOIN Users u ON r.user_id = u.id
+    JOIN users u ON r.user_id = u.id
     WHERE u.is_peer_counselor = 1
     ORDER BY r.created_at DESC
 ");
@@ -96,6 +97,15 @@ function timeAgo($datetime) {
                     </svg>
                     Resources
                 </a>
+                <?php if ($is_counselor_admin): ?>
+                <a href="counselor_admin.php" class="nav-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="3"/>
+                        <path d="M12 1v6m0 6v6m5.196-13.196l-4.242 4.242m0 6.364l4.242 4.242M23 12h-6m-6 0H5m13.196 5.196l-4.242-4.242m0-6.364l4.242-4.242"/>
+                    </svg>
+                    Admin Panel
+                </a>
+                <?php endif; ?>
                 <a href="profile.php" class="nav-link">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
@@ -124,8 +134,10 @@ function timeAgo($datetime) {
 
         <main>
             <div class="resources-container">
-                <h2>Mental Wellness Resources</h2>
-                <p class="subtitle">Expert guidance and support from verified peer counselors</p>
+                <div class="resources-header">
+                    <h2>Mental Wellness Resources</h2>
+                    <p class="subtitle">Expert guidance and support from verified peer counselors</p>
+                </div>
                 
                 <?php if ($success): ?>
                     <div class="success-message">

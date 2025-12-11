@@ -8,17 +8,11 @@
     box-sizing: border-box;
 }
 
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
-
 body {
-    
+    background-image: url('../images/bg-3.jpg');
     font-family: "Bubblebody Neue", Arial, sans-serif;
-    background: transparent;
-    background: url('../images/bg-3.jpg') center/cover no-repeat fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
     background-attachment: fixed;
     margin: 0;
     padding: 0;
@@ -27,7 +21,7 @@ body {
 }
 
 .container {
-    max-width: 900px;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 20px;
 }
@@ -63,6 +57,7 @@ nav {
     align-items: center;
     gap: 6px;
     font-size: 0.95em;
+    font-family: "Bubblebody Neue", Arial, sans-serif;
 }
 
 .nav-link:hover {
@@ -76,21 +71,89 @@ nav {
 }
 
 .feed-container {
-    background: rgba(114, 200, 189, 0.95);
-    border-radius: 25px;
-    padding: 35px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 30px;
+    background: transparent;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
+}
+
+.left-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .post-form-container {
-    margin-bottom: 35px;
+    background: rgba(114, 200, 189, 0.95);
+    border-radius: 25px;
+    padding: 30px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    margin-bottom: 0;
+}
+
+.user-stats-card {
+    background: rgba(114, 200, 189, 0.95);
+    border-radius: 25px;
+    padding: 30px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+}
+
+.user-stats-card h3 {
+    color: #017163;
+    margin: 0 0 20px 0;
+    font-size: 1.3em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: "Bubblebody Neue", Arial, sans-serif;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.stat-item {
+    background: #017163;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    color: #72c8bd;
+}
+
+.stat-item .stat-number {
+    font-size: 2em;
+    font-weight: 700;
+    color: #b9e366;
+    margin-bottom: 5px;
+    font-family: Arial, sans-serif;
+}
+
+.stat-item .stat-label {
+    font-size: 0.9em;
+    opacity: 0.9;
+    font-family: Arial, sans-serif;
+}
+
+.posts-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .post-form-container h3 {
     margin-top: 0;
-    color: #017163;
+    color: #b9e366;
+    background-color: #017163;
+    padding: 12px 20px;
+    border-radius: 12px;
     font-size: 1.4em;
     margin-bottom: 20px;
+    font-family: "Bubblebody Neue", Arial, sans-serif;
 }
 
 .post-form {
@@ -104,7 +167,7 @@ nav {
     border: none;
     border-radius: 12px;
     padding: 15px 18px;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    font-family: Arial, sans-serif;
     font-size: 1.1em;
     background-color: #017163;
     color: #72c8bd;
@@ -113,6 +176,7 @@ nav {
 
 .post-title-input::placeholder {
     color: rgba(114, 200, 189, 0.7);
+    font-family: Arial, sans-serif;
 }
 
 .post-form textarea {
@@ -121,7 +185,7 @@ nav {
     border: none;
     border-radius: 12px;
     padding: 15px 18px;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    font-family: Arial, sans-serif;
     font-size: 1.05em;
     background-color: #017163;
     color: #72c8bd;
@@ -130,6 +194,7 @@ nav {
 
 .post-form textarea::placeholder {
     color: rgba(114, 200, 189, 0.7);
+    font-family: Arial, sans-serif;
 }
 
 .post-form textarea:focus, .post-title-input:focus {
@@ -151,6 +216,7 @@ nav {
     gap: 8px;
     cursor: pointer;
     transition: all 0.3s ease;
+    font-family: "Bubblebody Neue", Arial, sans-serif;
 }
 
 .anonymous-checkbox:hover {
@@ -162,8 +228,8 @@ nav {
 }
 
 .post-button {
-    background-color: #017163;
-    color: #72c8bd;
+    background-color: #b9e366;
+    color: #017163;
     border: none;
     padding: 12px 25px;
     border-radius: 12px;
@@ -178,53 +244,49 @@ nav {
 }
 
 .post-button:hover {
-    background-color: #015a4f;
+    background-color: #a5d152;
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(1, 113, 99, 0.4);
-}
-
-.posts-container {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+    box-shadow: 0 4px 12px rgba(185, 227, 102, 0.4);
 }
 
 .post {
-    background: #017163;
-    border-radius: 18px;
-    padding: 25px;
-    color: #72c8bd;
+    background: rgba(114, 200, 189, 0.95);
+    border-radius: 20px;
+    padding: 30px;
+    color: #333;
     position: relative;
     transition: all 0.3s ease;
     animation: slideIn 0.4s ease-out;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    border: 3px solid #017163;
 }
 
 @keyframes slideIn {
     from {
         opacity: 0;
-        transform: translateX(-20px);
+        transform: translateY(20px);
     }
     to {
         opacity: 1;
-        transform: translateX(0);
+        transform: translateY(0);
     }
 }
 
 .post:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    transform: translateY(-5px);
+    box-shadow: 0 12px 35px rgba(0,0,0,0.25);
 }
 
 .post.resource {
-    border-left: 6px solid #b9e366;
-    background: linear-gradient(135deg, #017163 0%, #015a4f 100%);
+    border-left: 8px solid #b9e366;
+    background: linear-gradient(135deg, rgba(114, 200, 189, 0.95) 0%, rgba(91, 184, 173, 0.95) 100%);
 }
 
 .post-header {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
+    font-size: 0.9em;
 }
 
 .post-author-info {
@@ -236,75 +298,106 @@ nav {
 .author {
     font-weight: 700;
     font-size: 1.05em;
+    color: #017163;
+    font-family: "Bubblebody Neue", Arial, sans-serif;
 }
 
 .date {
     opacity: 0.8;
     font-size: 0.9em;
-    font-family: "sans-serif";
+    color: #017163;
+    font-family: Arial, sans-serif;
 }
 
 .resource-badge {
     background: #b9e366;
     color: #017163;
-    padding: 6px 12px;
-    border-radius: 10px;
-    font-size: 0.85em;
+    padding: 8px 15px;
+    border-radius: 12px;
+    font-size: 0.9em;
     font-weight: 700;
     display: flex;
     align-items: center;
     gap: 5px;
+    box-shadow: 0 2px 8px rgba(185, 227, 102, 0.3);
+    font-family: "Bubblebody Neue", Arial, sans-serif;
 }
 
 .post-title {
     color: #b9e366;
+    background-color: #017163;
+    padding: 10px 15px;
+    border-radius: 10px;
     margin: 0 0 12px 0;
-    font-size: 1.4em;
+    font-size: 1.6em;
     font-weight: 700;
+    font-family: "Bubblebody Neue", Arial, sans-serif;
+    width: fit-content ;
+    
 }
+
 
 .post-content {
     line-height: 1.7;
     margin-bottom: 15px;
     font-size: 1.05em;
+    color: #333;
+    font-family: Arial, sans-serif;
 }
 
 .post-actions {
     display: flex;
     gap: 15px;
     padding-top: 15px;
-    border-top: 1px solid rgba(114, 200, 189, 0.2);
+    border-top: 2px solid rgba(1, 113, 99, 0.2);
 }
 
 .action-btn {
-    background: none;
+    background: #017163;
     border: none;
     color: #72c8bd;
     cursor: pointer;
     display: flex;
     align-items: center;
     gap: 6px;
-    font-family: "sans-serif";
+    font-family: Arial, sans-serif;
     font-size: 1em;
-    padding: 8px 12px;
-    border-radius: 10px;
+    padding: 10px 16px;
+    border-radius: 12px;
     transition: all 0.3s ease;
+    font-weight: 600;
 }
 
 .action-btn:hover {
-    background-color: rgba(114, 200, 189, 0.1);
+    background-color: #015a4f;
     transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(1, 113, 99, 0.3);
 }
 
 .like-btn.liked {
     color: #ff6b9d;
-    font-family: "sans-serif";
 }
 
 .like-btn.liked svg {
     fill: #ff6b9d;
-    font-family: "sans-serif";
+}
 
+.like-count, .action-btn span {
+    font-family: Arial, sans-serif;
+}
+
+@media (max-width: 1200px) {
+    .feed-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .left-sidebar {
+        order: 1;
+    }
+    
+    .posts-container {
+        order: 2;
+    }
 }
 
 @media (max-width: 768px) {
@@ -319,14 +412,6 @@ nav {
         justify-content: center;
     }
     
-    .nav-link span {
-        display: none;
-    }
-    
-    .feed-container {
-        padding: 25px 20px;
-    }
-    
     .form-options {
         flex-direction: column;
         gap: 12px;
@@ -335,5 +420,9 @@ nav {
     
     .post-button {
         justify-content: center;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
     }
 }

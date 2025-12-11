@@ -10,6 +10,29 @@ if (!isset($_SESSION['user_id'])) {
 $user_id = $_SESSION['user_id'];
 $first_name = $_SESSION['first_name'];
 
+// Check if user is counselor admin
+$stmt = $pdo->prepare("SELECT is_counselor_admin FROM users WHERE id = ?");
+$stmt->execute([$user_id]);
+$user_check = $stmt->fetch();
+$is_counselor_admin = $user_check['is_counselor_admin'];
+
+// Get user stats
+$stmt = $pdo->prepare("SELECT COUNT(*) as count FROM posts WHERE user_id = ?");
+$stmt->execute([$user_id]);
+$user_posts_count = $stmt->fetch()['count'];
+
+$stmt = $pdo->prepare("SELECT COUNT(*) as count FROM likes WHERE user_id = ?");
+$stmt->execute([$user_id]);
+$user_likes_count = $stmt->fetch()['count'];
+
+$stmt = $pdo->prepare("SELECT COUNT(*) as count FROM comments WHERE user_id = ?");
+$stmt->execute([$user_id]);
+$user_comments_count = $stmt->fetch()['count'];
+
+$stmt = $pdo->prepare("SELECT COUNT(DISTINCT l.user_id) as count FROM likes l JOIN posts p ON l.post_id = p.id WHERE p.user_id = ?");
+$stmt->execute([$user_id]);
+$user_received_likes = $stmt->fetch()['count'];
+
 // Handle post submission
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['title']) && isset($_POST['content'])) {
     $title = trim($_POST['title']);
@@ -26,7 +49,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['title']) && isset($_PO
 
 // Fetch posts with like counts and user like status - randomize order on each load
 $random_seed = isset($_GET['seed']) ? intval($_GET['seed']) : time();
-
 $stmt = $pdo->prepare("
     SELECT 
         p.id,
@@ -44,7 +66,7 @@ $stmt = $pdo->prepare("
         MAX(CASE WHEN l.user_id = ? THEN 1 ELSE 0 END) as user_liked,
         RAND(?) as random_order
     FROM posts p
-    JOIN Users u ON p.user_id = u.id
+    JOIN users u ON p.user_id = u.id
     LEFT JOIN likes l ON p.id = l.post_id
     LEFT JOIN comments c ON p.id = c.post_id
     GROUP BY p.id
@@ -64,7 +86,7 @@ $stmt = $pdo->prepare("
         0 as user_liked,
         RAND(?) as random_order
     FROM resources r
-    JOIN Users u ON r.user_id = u.id
+    JOIN users u ON r.user_id = u.id
     WHERE u.is_peer_counselor = 1
     
     ORDER BY random_order, created_at DESC
@@ -124,6 +146,15 @@ function timeAgo($datetime) {
                     </svg>
                     Resources
                 </a>
+                <?php if ($is_counselor_admin): ?>
+                <a href="counselor_admin.php" class="nav-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="3"/>
+                        <path d="M12 1v6m0 6v6m5.196-13.196l-4.242 4.242m0 6.364l4.242 4.242M23 12h-6m-6 0H5m13.196 5.196l-4.242-4.242m0-6.364l4.242-4.242"/>
+                    </svg>
+                    Admin Panel
+                </a>
+                <?php endif; ?>
                 <a href="profile.php" class="nav-link">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
@@ -152,31 +183,61 @@ function timeAgo($datetime) {
 
         <main>
             <div class="feed-container">
-                <div class="post-form-container">
-                    <h3>What's on your mind, <?php echo htmlspecialchars($first_name); ?>?</h3>
-                    <form method="POST" class="post-form">
-                        <input type="text" name="title" placeholder="Give your post a title..." required class="post-title-input">
-                        <textarea name="content" placeholder="Share your thoughts..." required></textarea>
-                        <div class="form-options">
-                            <label class="anonymous-checkbox">
-                                <input type="checkbox" name="is_anonymous">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                                    <circle cx="9" cy="7" r="4"/>
-                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                                </svg>
-                                Post anonymously
-                            </label>
-                            <button type="submit" class="post-button">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <line x1="22" y1="2" x2="11" y2="13"/>
-                                    <polygon points="22 2 15 22 11 13 2 9 22 2"/>
-                                </svg>
-                                Post
-                            </button>
+                <div class="left-sidebar">
+                    <div class="post-form-container">
+                        <h3>What's on your mind, <?php echo htmlspecialchars($first_name); ?>?</h3>
+                        <form method="POST" class="post-form">
+                            <input type="text" name="title" placeholder="Give your post a title..." required class="post-title-input">
+                            <textarea name="content" placeholder="Share your thoughts..." required></textarea>
+                            <div class="form-options">
+                                <label class="anonymous-checkbox">
+                                    <input type="checkbox" name="is_anonymous">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                        <circle cx="9" cy="7" r="4"/>
+                                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                    </svg>
+                                    Post anonymously
+                                </label>
+                                <button type="submit" class="post-button">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <line x1="22" y1="2" x2="11" y2="13"/>
+                                        <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                                    </svg>
+                                    Post
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="user-stats-card">
+                        <h3>
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                <circle cx="12" cy="7" r="4"/>
+                            </svg>
+                            Your Activity
+                        </h3>
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <div class="stat-number"><?php echo $user_posts_count; ?></div>
+                                <div class="stat-label">Posts</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number"><?php echo $user_likes_count; ?></div>
+                                <div class="stat-label">Likes Given</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number"><?php echo $user_comments_count; ?></div>
+                                <div class="stat-label">Comments</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number"><?php echo $user_received_likes; ?></div>
+                                <div class="stat-label">Likes Received</div>
+                            </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
 
                 <div class="posts-container">
