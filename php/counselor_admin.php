@@ -79,6 +79,7 @@ $total_resources = $stmt->fetch()['count'];
 
 $stmt = $pdo->prepare("SELECT COUNT(*) as count FROM Users WHERE is_counselor_admin = 0");
 $stmt->execute();
+
 $total_students = $stmt->fetch()['count'];
 ?>
 <!DOCTYPE html>

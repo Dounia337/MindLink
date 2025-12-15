@@ -1,5 +1,5 @@
 -- Create the database
-CREATE DATABASE IF NOT EXISTS test_mindlink;
+CREATE DATABASE IF NOT EXISTS mindlink;
 USE mindlink;
 
 -- Create users table
