@@ -21,7 +21,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $last_name = trim($_POST['last_name']);
     $about = trim($_POST['about']);
     
-   // Handle profile picture upload
+    // Handle profile picture upload
+    // Handle profile picture upload
 $profile_pic = $user['profile_pic']; // current picture
 
 if (isset($_FILES['profile_pic']) && $_FILES['profile_pic']['error'] == 0) {
@@ -29,32 +30,33 @@ if (isset($_FILES['profile_pic']) && $_FILES['profile_pic']['error'] == 0) {
     $file_type = $_FILES['profile_pic']['type'];
     
     if (in_array($file_type, $allowed_types)) {
-        // Use existing uploads/profile_pics folder inside MindLink
-        $upload_dir = __DIR__ . '/../uploads/profile_pics/';
+        // Use uploads folder in public_html
+        $upload_dir = $_SERVER['DOCUMENT_ROOT'] . '/uploads/profile_pics/';
 
-        // Check folder exists and is writable
+        // Create folder if it does not exist
         if (!is_dir($upload_dir)) {
-            die('Upload folder does not exist. Please create MindLink/uploads/profile_pics/ on the server.');
-        }
-        if (!is_writable($upload_dir)) {
-            die('Upload folder is not writable. Set permissions to 755 or 775.');
-        }
-
-        // Prepare filename
-        $file_extension = pathinfo($_FILES['profile_pic']['name'], PATHINFO_EXTENSION);
-        $filename = 'user_' . $user_id . '_' . time() . '.' . $file_extension;
-        $destination = $upload_dir . $filename;
-
-        // Move uploaded file
-        if (move_uploaded_file($_FILES['profile_pic']['tmp_name'], $destination)) {
-            // Delete old profile picture if exists
-            if ($profile_pic && file_exists(__DIR__ . '/../' . $profile_pic)) {
-                unlink(__DIR__ . '/../' . $profile_pic);
+            if (!mkdir($upload_dir, 0755, true)) {
+                $error = 'Failed to create upload folder. Please check server permissions.';
             }
-            // Save new path relative to MindLink folder
-            $profile_pic = 'uploads/profile_pics/' . $filename;
-        } else {
-            $error = 'Failed to upload image. Check folder permissions.';
+        }
+
+        if (empty($error)) {
+            // Prepare filename
+            $file_extension = pathinfo($_FILES['profile_pic']['name'], PATHINFO_EXTENSION);
+            $filename = 'user_' . $user_id . '_' . time() . '.' . $file_extension;
+            $destination = $upload_dir . $filename;
+
+            // Move uploaded file
+            if (move_uploaded_file($_FILES['profile_pic']['tmp_name'], $destination)) {
+                // Delete old profile picture if exists
+                if ($profile_pic && file_exists($_SERVER['DOCUMENT_ROOT'] . '/' . $profile_pic)) {
+                    unlink($_SERVER['DOCUMENT_ROOT'] . '/' . $profile_pic);
+                }
+                // Save new path relative to public_html
+                $profile_pic = 'uploads/profile_pics/' . $filename;
+            } else {
+                $error = 'Failed to upload image. Check folder permissions.';
+            }
         }
     } else {
         $error = 'Invalid file type. Only JPG, PNG, and GIF are allowed.';
