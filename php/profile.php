@@ -22,46 +22,32 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $about = trim($_POST['about']);
     
     // Handle profile picture upload
-    // Handle profile picture upload
+    
+    $upload_dir = $_SERVER['DOCUMENT_ROOT'] . '/uploads/MindLink/uploads/';
 $profile_pic = $user['profile_pic']; // current picture
 
 if (isset($_FILES['profile_pic']) && $_FILES['profile_pic']['error'] == 0) {
     $allowed_types = ['image/jpeg', 'image/png', 'image/gif'];
     $file_type = $_FILES['profile_pic']['type'];
-    
+
     if (in_array($file_type, $allowed_types)) {
-        // Use uploads folder in public_html
-        $upload_dir = $_SERVER['DOCUMENT_ROOT'] . '/uploads/profile_pics/';
+        $file_extension = pathinfo($_FILES['profile_pic']['name'], PATHINFO_EXTENSION);
+        $filename = 'user_' . $user_id . '_' . time() . '.' . $file_extension;
+        $destination = $upload_dir . $filename;
 
-        // Create folder if it does not exist
-        if (!is_dir($upload_dir)) {
-            if (!mkdir($upload_dir, 0755, true)) {
-                $error = 'Failed to create upload folder. Please check server permissions.';
+        if (move_uploaded_file($_FILES['profile_pic']['tmp_name'], $destination)) {
+            if ($user['profile_pic'] && file_exists($_SERVER['DOCUMENT_ROOT'] . '/' . $user['profile_pic'])) {
+                unlink($_SERVER['DOCUMENT_ROOT'] . '/' . $user['profile_pic']);
             }
-        }
-
-        if (empty($error)) {
-            // Prepare filename
-            $file_extension = pathinfo($_FILES['profile_pic']['name'], PATHINFO_EXTENSION);
-            $filename = 'user_' . $user_id . '_' . time() . '.' . $file_extension;
-            $destination = $upload_dir . $filename;
-
-            // Move uploaded file
-            if (move_uploaded_file($_FILES['profile_pic']['tmp_name'], $destination)) {
-                // Delete old profile picture if exists
-                if ($profile_pic && file_exists($_SERVER['DOCUMENT_ROOT'] . '/' . $profile_pic)) {
-                    unlink($_SERVER['DOCUMENT_ROOT'] . '/' . $profile_pic);
-                }
-                // Save new path relative to public_html
-                $profile_pic = 'uploads/profile_pics/' . $filename;
-            } else {
-                $error = 'Failed to upload image. Check folder permissions.';
-            }
+            $profile_pic = 'uploads/MindLink/uploads/' . $filename;
+        } else {
+            $error = 'Failed to upload image. Check folder permissions.';
         }
     } else {
         $error = 'Invalid file type. Only JPG, PNG, and GIF are allowed.';
     }
 }
+
     // Handle peer counselor verification
     $is_peer_counselor = $user['is_peer_counselor'];
     $peer_counselor_id = $user['peer_counselor_id'];
