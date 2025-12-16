@@ -39,8 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $filename = 'user_' . $user_id . '_' . time() . '.' . $file_extension;
             $destination = $upload_dir . $filename;
             
-            var_dump(is_writable($upload_dir));
-            exit;
+    
             if (move_uploaded_file($_FILES['profile_pic']['tmp_name'], $destination)) {
                 // Delete old profile picture if exists
                 if ($profile_pic && file_exists('../' . $profile_pic)) {
