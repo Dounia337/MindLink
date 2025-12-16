@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $file_type = $_FILES['profile_pic']['type'];
         
         if (in_array($file_type, $allowed_types)) {
-            $upload_dir = '../uploads/profile_pics/';
+            $upload_dir = '../../uploads/profile_pics/';
             if (!is_dir($upload_dir)) {
                 mkdir($upload_dir, 0777, true);
             }
