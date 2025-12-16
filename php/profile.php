@@ -179,7 +179,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <form method="POST" enctype="multipart/form-data" class="profile-form">
                     <div class="profile-picture-section">
                         <div class="current-picture">
-                            <img src="<?php echo $user['profile_pic'] ?: '/images/default-profile.png'; ?>">" alt="Profile Picture">
+                            <img src="<?php echo $user['profile_pic'] ?: '/images/default-profile.png'; ?> " alt="Profile Picture">
                         </div>
                         <div class="upload-picture">
                             <label for="profile_pic">
