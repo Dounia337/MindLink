@@ -28,9 +28,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $file_type = $_FILES['profile_pic']['type'];
         
         if (in_array($file_type, $allowed_types)) {
+
+            
+            
             $upload_dir = $_SERVER['DOCUMENT_ROOT'] . '/uploads/profile_pics/';
             if (!is_dir($upload_dir)) {
-                mkdir($upload_dir, 0777, true);
+                mkdir($upload_dir, 0755, true);
             }
             
             $file_extension = pathinfo($_FILES['profile_pic']['name'], PATHINFO_EXTENSION);
