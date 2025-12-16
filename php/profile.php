@@ -30,8 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (in_array($file_type, $allowed_types)) {
 
             
-            
-            $upload_dir = $_SERVER['DOCUMENT_ROOT'] . '/uploads/profile_pics/';
+           $upload_dir = $_SERVER['DOCUMENT_ROOT'] . '/uploads/profile_pics/';
             if (!is_dir($upload_dir)) {
                 mkdir($upload_dir, 0755, true);
             }
