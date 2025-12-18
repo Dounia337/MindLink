@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS posts (
     content TEXT NOT NULL,
     is_anonymous BOOLEAN DEFAULT TRUE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES users(id)
+    FOREIGN KEY (user_id) REFERENCES Users(id)
 );
 
 -- Create resources table
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS resources (
     title VARCHAR(255) NOT NULL,
     content TEXT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES users(id)
+    FOREIGN KEY (user_id) REFERENCES Users(id)
 );
 
 -- Create comments table
@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS comments (
     is_anonymous BOOLEAN DEFAULT TRUE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (post_id) REFERENCES posts(id) ON DELETE CASCADE,
-    FOREIGN KEY (user_id) REFERENCES users(id)
+    FOREIGN KEY (user_id) REFERENCES Users(id)
 );
 
 -- Create likes table
@@ -57,7 +57,7 @@ CREATE TABLE IF NOT EXISTS likes (
     user_id INT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (post_id) REFERENCES posts(id) ON DELETE CASCADE,
-    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (user_id) REFERENCES Users(id),
     UNIQUE KEY unique_like (post_id, user_id)
 );
 

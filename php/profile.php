@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Handle profile picture upload
     
     $upload_dir = $_SERVER['DOCUMENT_ROOT'] . '/uploads/MindLink/uploads/';
-$profile_pic = $user['profile_pic']; // current picture
+    $profile_pic = $user['profile_pic']; // current picture
 
 if (isset($_FILES['profile_pic']) && $_FILES['profile_pic']['error'] == 0) {
     $allowed_types = ['image/jpeg', 'image/png', 'image/gif'];
