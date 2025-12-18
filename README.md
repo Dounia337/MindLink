@@ -30,9 +30,9 @@ MindLink is a student-centered mental wellness platform that provides a safe, an
 
 ##  Technologies Used
 
-- **Backend**: PHP 7.4+
+- **Backend**: PHP 
 - **Database**: MySQL
-- **Frontend**: HTML5, CSS3, JavaScript (ES6+)
+- **Frontend**: HTML, CSS, JavaScript
 - **AJAX**: Real-time interactions without page reload
 - **Custom Fonts**: Bubblebody Neue
 
@@ -55,10 +55,9 @@ MindLink is a student-centered mental wellness platform that provides a safe, an
 
 ### Prerequisites
 
-- PHP 7.4 or higher
-- MySQL 5.7 or higher
-- Apache/Nginx web server
-- Write permissions for uploads directory
+- PHP 
+- MySQL 5
+- Apache
 
 ### Setup Steps
 
@@ -91,10 +90,7 @@ chmod 755 uploads/MindLink/uploads
 ```
 
 **5. Access the Application**
-
-- Navigate to `http://yourdomain.com/pages/index.php`
-- Or use the welcome page at the root
-
+ use the welcome page at the root
 ---
 
 ## User Roles & Access
@@ -122,7 +118,7 @@ chmod 755 uploads/MindLink/uploads
 
 **Counselor Admin Account:**
 - Email: `counselor@mindlink.com`
-- Password: `counselor123`
+- Password: `password`
 
 **Counselor Access Code:**
 - Code: `COUNSELOR2025`
@@ -150,7 +146,7 @@ MindLink/
 │   └── help.css              # Help page
 ├── js/
 │   └── feed.js               # Feed interactions
-├── pages/
+├── php/
 │   ├── index.php             # Welcome page
 │   ├── signup.php            # User registration
 │   ├── counselor_signup.php  # Counselor registration
