@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $error = 'Password must be at least 6 characters long';
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $error = 'Invalid email format';
-    } elseif ($admin_code !== 'COUNSELOR2024') {
+    } elseif ($admin_code !== 'COUNSELOR2025') {
         $error = 'Invalid counselor access code';
     } else {
         // Check if email already exists
