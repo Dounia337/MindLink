@@ -1,4 +1,5 @@
 # MindLink - Mental Wellness Platform for Students
+Live Server Link: http://169.239.251.102:341/~deubaybe.dounia/uploads/MindLink/php/index.php
 
 ##  About MindLink
 
